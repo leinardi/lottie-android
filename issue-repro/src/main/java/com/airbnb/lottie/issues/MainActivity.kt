@@ -14,16 +14,19 @@ class MainActivity : AppCompatActivity() {
 
         val lottieDrawable = LottieDrawable()
 
-        LottieCompositionFactory.fromRawRes(this, R.raw.heart).addListener { lottieComposition ->
+        LottieCompositionFactory.fromRawRes(this, R.raw.spinner).addListener { lottieComposition ->
             lottieDrawable.composition = lottieComposition
             lottieDrawable.repeatCount = LottieDrawable.INFINITE
-            lottieDrawable.scale = 0.5f
+            lottieDrawable.scale = 0.3f
             lottieDrawable.playAnimation()
         }
 
 
-        findViewById<MaterialButton>(R.id.button).apply {
-            icon = lottieDrawable
+        findViewById<MaterialButton>(R.id.button).setOnClickListener {
+            (it as MaterialButton).apply {
+                icon = lottieDrawable
+                isEnabled = false
+            }
         }
     }
 }
